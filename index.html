@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TimeKeepers - Premium Watch Sales & Repair</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap');
+        
+        * {
+            scroll-behavior: smooth;
+        }
+        
+        .font-playfair { font-family: 'Playfair Display', serif; }
+        .font-inter { font-family: 'Inter', sans-serif; }
+        
+        .gradient-bg {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+        
+        .watch-card {
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+        }
+        
+        .watch-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 25px 50px rgba(0,0,0,0.2);
+        }
+        
+        .service-icon {
+            transition: all 0.3s ease;
+        }
+        
+        .service-card:hover .service-icon {
+            transform: scale(1.1);
+            color: #667eea;
+        }
+        
+        .floating-elements {
+            animation: float 6s ease-in-out infinite;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+        
+        .hero-text {
+            animation: fadeInUp 1s ease-out;
+        }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .parallax-bg {
+            background-attachment: fixed;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+    </style>
+</head>
+<body class="font-inter bg-gray-50">
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 bg-white/90 backdrop-blur-md shadow-lg">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center py-4">
+                <div class="flex items-center space-x-2">
+                    <div class="w-10 h-10 bg-gradient-to-r from-purple-600 to-blue-600 rounded-full flex items-center justify-center">
+                        <span class="text-white font-bold text-lg">⌚</span>
+                    </div>
+                    <span class="font-playfair text-2xl font-bold text-gray-800">TimeKeepers</span>
+                </div>
+                
+                <div class="hidden md:flex space-x-8">
+                    <a href="#home" class="text-gray-700 hover:text-purple-600 transition-colors font-medium">Home</a>
+                    <a href="#services" class="text-gray-700 hover:text-purple-600 transition-colors font-medium">Services</a>
+                    <a href="#watches" class="text-gray-700 hover:text-purple-600 transition-colors font-medium">Watches</a>
+                    <a href="#about" class="text-gray-700 hover:text-purple-600 transition-colors font-medium">About</a>
+                    <a href="#contact" class="text-gray-700 hover:text-purple-600 transition-colors font-medium">Contact</a>
+                </div>
+                
+                <button id="mobileMenuBtn" class="md:hidden p-2">
+                    <div class="w-6 h-6 flex flex-col justify-center items-center">
+                        <span class="w-6 h-0.5 bg-gray-600 mb-1 transition-all"></span>
+                        <span class="w-6 h-0.5 bg-gray-600 mb-1 transition-all"></span>
+                        <span class="w-6 h-0.5 bg-gray-600 transition-all"></span>
+                    </div>
+                </button>
+            </div>
+        </div>
+        
+        <!-- Mobile Menu -->
+        <div id="mobileMenu" class="md:hidden bg-white/95 backdrop-blur-md border-t hidden">
+            <div class="px-4 py-4 space-y-4">
+                <a href="#home" class="block text-gray-700 hover:text-purple-600 transition-colors">Home</a>
+                <a href="#services" class="block text-gray-700 hover:text-purple-600 transition-colors">Services</a>
+                <a href="#watches" class="block text-gray-700 hover:text-purple-600 transition-colors">Watches</a>
+                <a href="#about" class="block text-gray-700 hover:text-purple-600 transition-colors">About</a>
+                <a href="#contact" class="block text-gray-700 hover:text-purple-600 transition-colors">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="min-h-screen gradient-bg flex items-center justify-center relative overflow-hidden">
+        <div class="absolute inset-0 bg-black/20"></div>
+        
+        <!-- Floating Elements -->
+        <div class="absolute top-20 left-10 floating-elements">
+            <div class="w-4 h-4 bg-white/20 rounded-full"></div>
+        </div>
+        <div class="absolute top-40 right-20 floating-elements" style="animation-delay: -2s;">
+            <div class="w-6 h-6 bg-white/10 rounded-full"></div>
+        </div>
+        <div class="absolute bottom-40 left-20 floating-elements" style="animation-delay: -4s;">
+            <div class="w-3 h-3 bg-white/30 rounded-full"></div>
+        </div>
+        
+        <div class="text-center text-white z-10 max-w-4xl mx-auto px-4">
+            <h1 class="font-playfair text-5xl md:text-7xl font-bold mb-6 hero-text">
+                Timeless Elegance
+            </h1>
+            <p class="text-xl md:text-2xl mb-8 hero-text font-light">
+                Premium Watch Sales & Expert Repair Services
+            </p>
+            <div class="space-x-4 hero-text">
+                <button onclick="scrollToSection('watches')" class="bg-white text-purple-600 px-8 py-3 rounded-full font-semibold hover:bg-gray-100 transition-all transform hover:scale-105">
+                    Shop Watches
+                </button>
+                <button onclick="scrollToSection('services')" class="border-2 border-white text-white px-8 py-3 rounded-full font-semibold hover:bg-white hover:text-purple-600 transition-all transform hover:scale-105">
+                    Our Services
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="font-playfair text-4xl md:text-5xl font-bold text-gray-800 mb-4">Our Services</h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">Expert craftsmanship and premium service for all your timepiece needs</p>
+            </div>
+            
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="service-card text-center p-8 rounded-2xl bg-gradient-to-br from-blue-50 to-purple-50 hover:shadow-xl transition-all">
+                    <div class="service-icon text-5xl mb-6">🔧</div>
+                    <h3 class="font-playfair text-2xl font-semibold mb-4 text-gray-800">Watch Repair</h3>
+                    <p class="text-gray-600 mb-6">Professional repair services for all watch brands including mechanical, automatic, and quartz timepieces.</p>
+                    <ul class="text-sm text-gray-500 space-y-2">
+                        <li>• Movement servicing</li>
+                        <li>• Crystal replacement</li>
+                        <li>• Crown & stem repair</li>
+                        <li>• Water resistance testing</li>
+                    </ul>
+                </div>
+                
+                <div class="service-card text-center p-8 rounded-2xl bg-gradient-to-br from-purple-50 to-pink-50 hover:shadow-xl transition-all">
+                    <div class="service-icon text-5xl mb-6">⌚</div>
+                    <h3 class="font-playfair text-2xl font-semibold mb-4 text-gray-800">Premium Sales</h3>
+                    <p class="text-gray-600 mb-6">Curated collection of luxury and premium watches from renowned brands worldwide.</p>
+                    <ul class="text-sm text-gray-500 space-y-2">
+                        <li>• Rolex & Omega</li>
+                        <li>• Seiko & Citizen</li>
+                        <li>• Limited editions</li>
+                        <li>• Authenticity guaranteed</li>
+                    </ul>
+                </div>
+                
+                <div class="service-card text-center p-8 rounded-2xl bg-gradient-to-br from-green-50 to-blue-50 hover:shadow-xl transition-all">
+                    <div class="service-icon text-5xl mb-6">💎</div>
+                    <h3 class="font-playfair text-2xl font-semibold mb-4 text-gray-800">Restoration</h3>
+                    <p class="text-gray-600 mb-6">Bring vintage and antique timepieces back to their original glory with expert restoration.</p>
+                    <ul class="text-sm text-gray-500 space-y-2">
+                        <li>• Vintage restoration</li>
+                        <li>• Dial refinishing</li>
+                        <li>• Case polishing</li>
+                        <li>• Historical accuracy</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Watches -->
+    <section id="watches" class="py-20 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="font-playfair text-4xl md:text-5xl font-bold text-gray-800 mb-4">Featured Timepieces</h2>
+                <p class="text-xl text-gray-600">Discover our carefully curated collection of premium watches</p>
+            </div>
+            
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="watch-card bg-white rounded-2xl overflow-hidden shadow-lg">
+                    <div class="h-64 bg-gradient-to-br from-gray-200 to-gray-300 flex items-center justify-center">
+                        <span class="text-6xl">⌚</span>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="font-playfair text-xl font-semibold mb-2">Classic Elegance</h3>
+                        <p class="text-gray-600 mb-4">Timeless design meets modern precision in this stunning dress watch.</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-2xl font-bold text-purple-600">$2,499</span>
+                            <button class="bg-purple-600 text-white px-4 py-2 rounded-full hover:bg-purple-700 transition-colors">
+                                View Details
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="watch-card bg-white rounded-2xl overflow-hidden shadow-lg">
+                    <div class="h-64 bg-gradient-to-br from-blue-200 to-blue-300 flex items-center justify-center">
+                        <span class="text-6xl">⌚</span>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="font-playfair text-xl font-semibold mb-2">Sport Chronograph</h3>
+                        <p class="text-gray-600 mb-4">Professional sports watch with precision timing and robust construction.</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-2xl font-bold text-purple-600">$3,299</span>
+                            <button class="bg-purple-600 text-white px-4 py-2 rounded-full hover:bg-purple-700 transition-colors">
+                                View Details
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="watch-card bg-white rounded-2xl overflow-hidden shadow-lg">
+                    <div class="h-64 bg-gradient-to-br from-gold-200 to-yellow-300 flex items-center justify-center">
+                        <span class="text-6xl">⌚</span>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="font-playfair text-xl font-semibold mb-2">Luxury Heritage</h3>
+                        <p class="text-gray-600 mb-4">Exquisite craftsmanship in this limited edition luxury timepiece.</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-2xl font-bold text-purple-600">$8,999</span>
+                            <button class="bg-purple-600 text-white px-4 py-2 rounded-full hover:bg-purple-700 transition-colors">
+                                View Details
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-2 gap-12 items-center">
+                <div>
+                    <h2 class="font-playfair text-4xl md:text-5xl font-bold text-gray-800 mb-6">Crafting Time Since 1985</h2>
+                    <p class="text-lg text-gray-600 mb-6">
+                        With over three decades of expertise in horology, TimeKeepers has been the trusted destination for watch enthusiasts seeking exceptional quality and service.
+                    </p>
+                    <p class="text-lg text-gray-600 mb-8">
+                        Our master watchmakers combine traditional craftsmanship with modern techniques to ensure every timepiece receives the care and attention it deserves.
+                    </p>
+                    
+                    <div class="grid grid-cols-2 gap-6">
+                        <div class="text-center">
+                            <div class="text-3xl font-bold text-purple-600">10,000+</div>
+                            <div class="text-gray-600">Watches Repaired</div>
+                        </div>
+                        <div class="text-center">
+                            <div class="text-3xl font-bold text-purple-600">500+</div>
+                            <div class="text-gray-600">Premium Brands</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="relative">
+                    <div class="bg-gradient-to-br from-purple-400 to-blue-500 rounded-2xl p-8 text-white">
+                        <h3 class="font-playfair text-2xl font-semibold mb-4">Why Choose TimeKeepers?</h3>
+                        <ul class="space-y-3">
+                            <li class="flex items-center">
+                                <span class="w-6 h-6 bg-white/20 rounded-full flex items-center justify-center mr-3">✓</span>
+                                Certified Master Watchmakers
+                            </li>
+                            <li class="flex items-center">
+                                <span class="w-6 h-6 bg-white/20 rounded-full flex items-center justify-center mr-3">✓</span>
+                                1-Year Service Warranty
+                            </li>
+                            <li class="flex items-center">
+                                <span class="w-6 h-6 bg-white/20 rounded-full flex items-center justify-center mr-3">✓</span>
+                                Authentic Parts & Materials
+                            </li>
+                            <li class="flex items-center">
+                                <span class="w-6 h-6 bg-white/20 rounded-full flex items-center justify-center mr-3">✓</span>
+                                Free Consultation & Estimates
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-20 bg-gray-900 text-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="font-playfair text-4xl md:text-5xl font-bold mb-4">Get In Touch</h2>
+                <p class="text-xl text-gray-300">Ready to service your timepiece or find your perfect watch?</p>
+            </div>
+            
+            <div class="grid md:grid-cols-2 gap-12">
+                <div>
+                    <h3 class="font-playfair text-2xl font-semibold mb-6">Contact Information</h3>
+                    
+                    <div class="space-y-6">
+                        <div class="flex items-start">
+                            <div class="w-12 h-12 bg-purple-600 rounded-full flex items-center justify-center mr-4 flex-shrink-0">
+                                📍
+                            </div>
+                            <div>
+                                <h4 class="font-semibold mb-1">Visit Our Shop</h4>
+                                <p class="text-gray-300">123 Timekeeper Lane<br>Luxury District, City 12345</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start">
+                            <div class="w-12 h-12 bg-purple-600 rounded-full flex items-center justify-center mr-4 flex-shrink-0">
+                                📞
+                            </div>
+                            <div>
+                                <h4 class="font-semibold mb-1">Call Us</h4>
+                                <p class="text-gray-300">(555) 123-WATCH<br>Mon-Sat: 9AM-7PM</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start">
+                            <div class="w-12 h-12 bg-purple-600 rounded-full flex items-center justify-center mr-4 flex-shrink-0">
+                                ✉️
+                            </div>
+                            <div>
+                                <h4 class="font-semibold mb-1">Email Us</h4>
+                                <p class="text-gray-300">info@timekeepers.com<br>service@timekeepers.com</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div>
+                    <h3 class="font-playfair text-2xl font-semibold mb-6">Send Us a Message</h3>
+                    
+                    <form class="space-y-4" onsubmit="handleSubmit(event)">
+                        <div class="grid md:grid-cols-2 gap-4">
+                            <input type="text" placeholder="Your Name" class="w-full px-4 py-3 bg-gray-800 border border-gray-700 rounded-lg focus:outline-none focus:border-purple-500 transition-colors" required>
+                            <input type="email" placeholder="Your Email" class="w-full px-4 py-3 bg-gray-800 border border-gray-700 rounded-lg focus:outline-none focus:border-purple-500 transition-colors" required>
+                        </div>
+                        <input type="text" placeholder="Subject" class="w-full px-4 py-3 bg-gray-800 border border-gray-700 rounded-lg focus:outline-none focus:border-purple-500 transition-colors" required>
+                        <textarea rows="5" placeholder="Your Message" class="w-full px-4 py-3 bg-gray-800 border border-gray-700 rounded-lg focus:outline-none focus:border-purple-500 transition-colors resize-none" required></textarea>
+                        <button type="submit" class="w-full bg-purple-600 text-white py-3 rounded-lg font-semibold hover:bg-purple-700 transition-colors transform hover:scale-105">
+                            Send Message
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-black text-white py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-4 gap-8">
+                <div class="md:col-span-2">
+                    <div class="flex items-center space-x-2 mb-4">
+                        <div class="w-10 h-10 bg-gradient-to-r from-purple-600 to-blue-600 rounded-full flex items-center justify-center">
+                            <span class="text-white font-bold text-lg">⌚</span>
+                        </div>
+                        <span class="font-playfair text-2xl font-bold">TimeKeepers</span>
+                    </div>
+                    <p class="text-gray-400 mb-4">
+                        Your trusted partner for premium watch sales and expert repair services. Crafting time with precision since 1985.
+                    </p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-purple-600 transition-colors">📘</a>
+                        <a href="#" class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-purple-600 transition-colors">📷</a>
+                        <a href="#" class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-purple-600 transition-colors">🐦</a>
+                    </div>
+                </div>
+                
+                <div>
+                    <h4 class="font-semibold mb-4">Quick Links</h4>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><a href="#home" class="hover:text-white transition-colors">Home</a></li>
+                        <li><a href="#services" class="hover:text-white transition-colors">Services</a></li>
+                        <li><a href="#watches" class="hover:text-white transition-colors">Watches</a></li>
+                        <li><a href="#about" class="hover:text-white transition-colors">About</a></li>
+                        <li><a href="#contact" class="hover:text-white transition-colors">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="font-semibold mb-4">Services</h4>
+                    <ul class="space-y-2 text-gray-400">
+                        <li>Watch Repair</li>
+                        <li>Premium Sales</li>
+                        <li>Restoration</li>
+                        <li>Maintenance</li>
+                        <li>Consultation</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400">
+                <p>&copy; 2025 TimeKeepers. All rights reserved. | Privacy Policy | Terms of Service</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const mobileMenu = document.getElementById('mobileMenu');
+        
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+        
+        // Close mobile menu when clicking on a link
+        const mobileLinks = mobileMenu.querySelectorAll('a');
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+            });
+        });
+        
+        // Smooth scrolling function
+        function scrollToSection(sectionId) {
+            document.getElementById(sectionId).scrollIntoView({
+                behavior: 'smooth'
+            });
+        }
+        
+        // Form submission handler
+        function handleSubmit(event) {
+            event.preventDefault();
+            alert('Thank you for your message! We\'ll get back to you soon.');
+            event.target.reset();
+        }
+        
+        // Navbar background change on scroll
+        window.addEventListener('scroll', () => {
+            const navbar = document.querySelector('nav');
+            if (window.scrollY > 100) {
+                navbar.classList.add('bg-white/95');
+                navbar.classList.remove('bg-white/90');
+            } else {
+                navbar.classList.add('bg-white/90');
+                navbar.classList.remove('bg-white/95');
+            }
+        });
+        
+        // Intersection Observer for animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+        
+        // Observe service cards and watch cards
+        document.querySelectorAll('.service-card, .watch-card').forEach(card => {
+            card.style.opacity = '0';
+            card.style.transform = 'translateY(50px)';
+            card.style.transition = 'all 0.6s ease';
+            observer.observe(card);
+        });
+    </script>
+</body>
+</html>
